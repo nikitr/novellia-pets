@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import CreatePetForm from './user/CreatePetForm';
+import PetDisplay from './user/PetDisplay';
+import PetGrid from './admin/PetGrid';
 
 function App() {
+  const pet = {
+    name: "chai",
+    type: "dog",
+    owner: "nikita",
+    dob: new Date(),
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="appContainer">
+      <CreatePetForm />
+      <PetDisplay pet={pet}/>
+      <PetGrid />
     </div>
   );
 }
