@@ -53,6 +53,10 @@ React, NodeJS
 Neon serverless Postgres database 
 Prisma ORM
 
+Packages:
+react-router-dom: Routing configuration
+react-datepicker: Date selection for pet dob and vaccine dates
+
 ## Resources
 Decision to use Neon to host Postgres database: https://hasura.io/blog/top-postgresql-database-free-tier-solutions
 Prisma with Neon setup: https://neon.tech/docs/guides/prisma

@@ -3,23 +3,7 @@ import './admin.css';
 import type {Pet} from '../types';
 
 function PetGrid() {
-  const [pets, setPets] = useState<Pet[]>([
-    {
-      name: "chai",
-      type: "dog",
-      owner: "nikita",
-      dob: new Date(),
-      vaccines: [{
-        name: "shot1",
-        date: new Date(),
-      }],
-      allergies: [{
-        name: "olives",
-        reactions: "rash",
-        severity: "mild",
-      }]
-    },
-  ]);
+  const [pets, setPets] = useState<Pet[]>([]);
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -42,7 +26,7 @@ function PetGrid() {
           <h2>Name: {pet.name}</h2>
             <p>Type: {pet.type}</p>
             <p>Owner: {pet.owner}</p>
-            <p>DOB: {pet.dob.toString()}</p>
+            <p>DOB: {pet.dob.toString()} </p>
             <table>
               <caption>
                 Vaccine Records
