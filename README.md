@@ -46,18 +46,46 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Technical Decisions
-System Design: 
+[System Design](https://drive.google.com/file/d/1gnSTtLvr3XNYzxoS_2IIkiU75akAfFUD/view?usp=sharing) 
 
-Tech Stack:
-React, NodeJS
-Neon serverless Postgres database 
-Prisma ORM
+Tech Stack Summary:
+- React + NodeJS for front end and server implementation
+- Prisma ORM for simple, intuitive API for querying the DB
+- SQL db for structured, predefined schemas. Most familiar with Postgres --> Neon serverless Postgres database
 
 Packages:
-react-router-dom: Routing configuration
-react-datepicker: Date selection for pet dob and vaccine dates
+- react-router-dom: Routing configuration
+- react-datepicker: Date selection for pet dob and vaccine dates
+
+## App structure
+- A general user will hit the homepage which contains the pet creation form and the subsequent display of that pet information. Once a user has created their pet successfully, they can add a vaccine record and/or allergy record. They will see this reflected on the page once created.
+- Admins can currently hit the /admin link which provides a read-only mode of all pets in the db with corresponding pet data.
+- Created a ReactContext for pet so I don't have to pass the current "user" (pet) amongst components. This is useful as we need to know which pet was just created so that we can view the appropriate pet data and add records for that pet. 
+- Created a reusable component PetItem which can be shared between the user view and admin view. This is a simple component which presents all the pet data (taking the pet, its vaccines, and allergies, as props).
+- The component states are pretty straightforward and mirror the backend.
+- I envisioned that a table/chart would be the best way to convey the medical records for a pet.
+
+## [API](https://github.com/nikitr/novellia-pets-server) structure
+- The queries mostly matched what I scoped out in my system design diagram/discussion.
+- Ended up separating out the add record requests for vaccines vs allergies. Since the fields are different (and differences may grow over time), it seemed more straightforward to create two different requests, rather than messily combine the logic (which would probably require odd conditionals).
+- Also ended up needing 2 queries to get the different types of records. This came out of a need to show the user that their records have been successfully added, on the front end.
+
+## Backend structure
+- I figured it would be cleanest to have a separate table for vaccine records and for allergy records. Each record table has a pet id foreign key which references each record to its corresponding unique pet. This also allows us to build cleanly in the case that we want to add future record types.
+- Straightforward data types per field in tables.
+
+## Improvements
+- Remove the "any" and "@ts-ignore" where added. Flesh out the types.
+- Styling! Very barebones right now. Pretty ugly.
+- Validation: We probably want a list of pets we support, some checks on the pet creation form for the pet type. We should add some restrictions on the datepicker for dob and vaccine to only allow dates before current date.
+- Once there is authentication, we can rely on that to provide current pet data.
+
+## Reflections
+- First time using Prisma, docs are well done and the setup is very fast. 
+- Same goes for Neon! Great UI to view and update tables. Fast and simple setup.
+- Seamless integration between Prisma x Neon: easy to update table schemas. `npx prisma db push`
 
 ## Resources
-Decision to use Neon to host Postgres database: https://hasura.io/blog/top-postgresql-database-free-tier-solutions
-Prisma with Neon setup: https://neon.tech/docs/guides/prisma
+- Decision to use Neon to host Postgres database: https://hasura.io/blog/top-postgresql-database-free-tier-solutions
+- Prisma with Neon setup: https://neon.tech/docs/guides/prisma
 
