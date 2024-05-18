@@ -6,10 +6,10 @@ import { PetContext } from '../App';
 import "react-datepicker/dist/react-datepicker.css";
 
 function CreatePetForm() {
-  const [name, setName] = useState<String>();
-  const [type, setType] = useState<String>();
-  const [owner, setOwner] = useState<String>();
-  const [dob, setDob] = useState<Date>(new Date());
+  const [name, setName] = useState<string>("");
+  const [type, setType] = useState<string>("");
+  const [owner, setOwner] = useState<string>("");
+  const [dob, setDob] = useState<Date>();
   // @ts-ignore
   const { setCurrPet } = useContext(PetContext);
 
@@ -36,7 +36,7 @@ function CreatePetForm() {
       setName("");
       setType("");
       setOwner("");
-      setDob(new Date());
+      setDob(undefined);
     } catch (e) {
       console.log(e);
     }
@@ -44,11 +44,11 @@ function CreatePetForm() {
 
   return (
     <form className="createPetForm" onSubmit={handleAddPet}>
-        <input placeholder='Name' required onChange={e => setName(e.target.value)}/>
-        <input placeholder='Type' required onChange={e => setType(e.target.value)}/>
-        <input placeholder='Owner Name' required onChange={e => setOwner(e.target.value)}/>
-        <DatePicker wrapperClassName="datePicker" selected={dob} onChange={(date: Date) => setDob(date)} />
-        <button type="submit">Add Pet</button> 
+      <input placeholder='Name' required onChange={e => setName(e.target.value)} value={name} />
+      <input placeholder='Type' required onChange={e => setType(e.target.value)} value={type} />
+      <input placeholder='Owner Name' required onChange={e => setOwner(e.target.value)} value={owner} />
+      <DatePicker wrapperClassName="datePicker" placeholderText={'Please select a date'} selected={dob} onChange={(date: Date) => setDob(date)} />
+      <button type="submit">Add Pet</button> 
     </form>
   );
 }

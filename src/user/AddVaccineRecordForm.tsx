@@ -1,10 +1,14 @@
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import './user.css';
 import { PetContext } from '../App';
 import DatePicker from "react-datepicker";
 
-function AddVaccineRecordForm() {
-  const [name, setName] = useState<String>();
+type Props = {
+  setVaccines: any;
+};
+
+function AddVaccineRecordForm({ setVaccines }: Props) {
+  const [name, setName] = useState<string>("");
   const [date, setDate] = useState<Date>();
   // @ts-ignore
   const { currPet: { id: petId } } = useContext(PetContext);
@@ -33,10 +37,23 @@ function AddVaccineRecordForm() {
     }
   };
 
+  useEffect(() => {
+    const fetchRecords = async () => {
+      try {
+        const allergyResponse = await fetch(`http://localhost:4000/get-vaccines?petId=${petId}`);
+        const allergyJson = await allergyResponse.json();
+        setVaccines(allergyJson);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchRecords();
+  }, [setVaccines, petId, name]); // name included in dependencies to retrigger use effect after submit!
+
   return (
   <form className="addVaccineRecordForm" onSubmit={handleAddRecord}>
-    <input placeholder='Vaccine name' required onChange={e => setName(e.target.value)}/>
-    <DatePicker wrapperClassName="datePicker" selected={date} onChange={(date: Date) => setDate(date)} />
+    <input placeholder='Vaccine name' required onChange={e => setName(e.target.value)} value={name} />
+    <DatePicker wrapperClassName="datePicker" placeholderText={'Please select a date'} selected={date} onChange={(date: Date) => setDate(date)} />
     <button type="submit">Add vaccine record</button> 
   </form>
   );
