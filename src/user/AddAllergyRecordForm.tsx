@@ -53,7 +53,7 @@ function AddAllergyRecordForm({ setAllergies }: Props) {
   }, [setAllergies, petId, name]); // name included in dependencies to retrigger use effect after submit!
 
   return (
-  <form className="addVaccineRecordForm" onSubmit={handleAddRecord}>
+  <form className="addAllergyRecordForm" onSubmit={handleAddRecord}>
     <input placeholder='Allergy name' required onChange={e => setName(e.target.value)} value={name}/>
     <input placeholder='Reactions' required onChange={e => setReactions(e.target.value)} value={reactions}/>
     <input placeholder='Severity' required onChange={e => setSeverity(e.target.value)} value={severity}/>

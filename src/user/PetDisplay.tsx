@@ -14,8 +14,10 @@ function PetDisplay() {
   return (
   <div className="petDisplay">
     <PetItem pet={currPet} vaccines={vaccines} allergies={allergies}/>
-    <AddVaccineRecordForm setVaccines={setVaccines}/>
-    <AddAllergyRecordForm setAllergies={setAllergies} />
+    {currPet.name && <div className="addRecordForms">
+      <AddVaccineRecordForm setVaccines={setVaccines}/>
+      <AddAllergyRecordForm setAllergies={setAllergies} />
+    </div>}
   </div>
   );
 }

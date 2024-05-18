@@ -59,7 +59,7 @@ Packages:
 
 ## App structure
 - A general user will hit the homepage which contains the pet creation form and the subsequent display of that pet information. Once a user has created their pet successfully, they can add a vaccine record and/or allergy record. They will see this reflected on the page once created.
-- Admins can currently hit the /admin link which provides a read-only mode of all pets in the db with corresponding pet data.
+- Admins can currently hit the `/admin` link which provides a read-only mode of all pets in the db with corresponding pet data.
 - Created a ReactContext for pet so I don't have to pass the current "user" (pet) amongst components. This is useful as we need to know which pet was just created so that we can view the appropriate pet data and add records for that pet. 
 - Created a reusable component PetItem which can be shared between the user view and admin view. This is a simple component which presents all the pet data (taking the pet, its vaccines, and allergies, as props).
 - The component states are pretty straightforward and mirror the backend.

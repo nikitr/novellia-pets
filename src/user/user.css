@@ -2,17 +2,6 @@ body {
   margin: 20px;
   background-color: lightgrey;
   }
-
-.petDisplay {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
   
 h2 {
   margin: 0;
@@ -27,23 +16,33 @@ h2 {
 textarea,
 input {
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid rgb(141, 110, 99);
   padding: 10px;
   font-size: 16px;
 }
   
-.createPetForm button {
+.createPetForm button, .addVaccineRecordForm button, .addAllergyRecordForm button {
   border-radius: 5px;
-  background-color: rgb(64, 154, 184);
+  background-color: rgb(141, 110, 99);
   border: none;
   padding: 10px;
   font-size: 16px;
   color: white;
 }
   
-.createPetForm button:hover {
-  background-color: rgb(106, 175, 198);
+.createPetForm button:hover, .addVaccineRecordForm button:hover, .addAllergyRecordForm button:hover {
+  background-color: rgb(172, 158, 153);
   cursor: pointer;
 }
 
+.addRecordForms {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.addAllergyRecordForm input, .addVaccineRecordForm input {
+  margin-right: 10px;
+}
   

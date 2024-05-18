@@ -7,12 +7,13 @@ type Props = {
 };
 function PetItem(props: Props) {
   const { pet, vaccines, allergies } = props;
+  const petDate = pet.dob && new Date(pet.dob);
   return (
     <div className="petItem">
-      <h2>Name: {pet.name}</h2>
-      <p>Type: {pet.type}</p>
-      <p>Owner: {pet.owner}</p>
-      <p>DOB: {pet.dob?.toString()}</p>
+      <h3>Name: {pet.name}</h3>
+      <h3>Type: {pet.type}</h3>
+      <h3>Owner: {pet.owner}</h3>
+      <h3>DOB: {petDate && `${petDate.getMonth()}-${petDate.getDay()}-${petDate.getFullYear()}`}</h3>
       <table>
         <caption>
           Vaccine Records
@@ -24,12 +25,15 @@ function PetItem(props: Props) {
           </tr>
         </thead>
         <tbody>
-          {vaccines?.map((record: Vaccine) => (
-            <tr>
-              <th scope="row">{record?.name}</th>
-              <td>{record?.date.toString()}</td>
-            </tr>
-          ))}
+          {vaccines?.map((record: Vaccine) => {
+            const recordDate = new Date(record?.date)
+            return (
+              <tr>
+                <th scope="row">{record?.name}</th>
+                <td>{`${recordDate.getMonth()}-${recordDate.getDay()}-${recordDate.getFullYear()}`}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <table>
