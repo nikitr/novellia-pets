@@ -13,7 +13,7 @@ function PetItem(props: Props) {
       <h3>Name: {pet.name}</h3>
       <h3>Type: {pet.type}</h3>
       <h3>Owner: {pet.owner}</h3>
-      <h3>DOB: {petDate && `${petDate.getMonth()}-${petDate.getDay()}-${petDate.getFullYear()}`}</h3>
+      <h3>DOB: {petDate && `${petDate.getMonth()+1}-${petDate.getDate()}-${petDate.getFullYear()}`}</h3>
       <table>
         <caption>
           Vaccine Records
@@ -30,7 +30,7 @@ function PetItem(props: Props) {
             return (
               <tr>
                 <th scope="row">{record?.name}</th>
-                <td>{`${recordDate.getMonth()}-${recordDate.getDay()}-${recordDate.getFullYear()}`}</td>
+                <td>{`${recordDate.getMonth()+1}-${recordDate.getDate()}-${recordDate.getFullYear()}`}</td>
               </tr>
             );
           })}

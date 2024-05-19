@@ -14,11 +14,13 @@ function PetDisplay() {
   return (
     <div className="petDisplay">
       <h2>Your Pet</h2>
-      <PetItem pet={currPet} vaccines={vaccines} allergies={allergies}/>
-        {currPet.name && <div className="addRecordForms">
-          <AddVaccineRecordForm setVaccines={setVaccines}/>
-          <AddAllergyRecordForm setAllergies={setAllergies} />
-        </div>}
+        <PetItem pet={currPet} vaccines={vaccines} allergies={allergies}/>
+        {currPet.name &&
+          (<div className="addRecordForms">
+            <AddVaccineRecordForm setVaccines={setVaccines}/>
+            <AddAllergyRecordForm setAllergies={setAllergies} />
+          </div>)
+        }
     </div>
   );
 }
