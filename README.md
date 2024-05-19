@@ -50,9 +50,9 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Novellia Pets Project Summary
 Novellia take home quiz: gather and display medical records for your furry friend.
-novellia-pets contains client side code
-novellia-pets-server contains server side code
-please run the server with `npm start` then the app with `npm start` alongside it.
+- novellia-pets contains client side code
+- novellia-pets-server contains server side code
+- please run the server with `npm start` then the app with `npm start` alongside it.
 
 ## Technical Decisions
 [System Design](https://drive.google.com/file/d/1gnSTtLvr3XNYzxoS_2IIkiU75akAfFUD/view?usp=sharing) 
