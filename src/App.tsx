@@ -8,12 +8,13 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import { Pet } from './types';
 
 // @ts-ignore
 export const PetContext = createContext();
 
 function App() {
-  const [ currPet, setCurrPet ] = useState({});
+  const [ currPet, setCurrPet ] = useState<Pet>();
   const value = {currPet, setCurrPet};
 
   return (
@@ -24,7 +25,7 @@ function App() {
           element={<PetContext.Provider value={value}>
           <div className="appContainer">
             <CreatePetForm />
-            <PetDisplay />
+            {currPet?.name && <PetDisplay />}
           </div>
         </PetContext.Provider>}
         />

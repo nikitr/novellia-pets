@@ -93,7 +93,7 @@ Packages:
 - The admin page UI could be cleaner (maybe we list out the pet names and the admin can click on a pet to view more, rather than displaying all info in its entirety). And/or add pagination as the db grows to maintain load times.
 - There might be some minor duplicated code in queries.ts which can be pulled out into a function (the logic to get all vaccines and allergies for a pet is reused).
 - Only show PetDisplay once pet is created.
-- My additional feature is the pet display where you can view your pet details and records after creating a pet. I would like to add update functionality (new query and edit button on PetDisplay which allows you to change your pet data).
+- The edit pet feature must be fleshed out and improved. Should include dob and records. Should have a cancel button to return to pet display. Can also improve the `editPet` query to just pass through the fields that have been changed (currently, I pass through all the fields).
 
 ## Reflections
 - First time using Prisma, docs are well done and the setup is very fast. 

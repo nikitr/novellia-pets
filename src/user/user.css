@@ -13,7 +13,7 @@ input {
   font-size: 16px;
 }
   
-.createPetForm button, .addVaccineRecordForm button, .addAllergyRecordForm button {
+.createPetForm button, .addVaccineRecordForm button, .addAllergyRecordForm button, .petDisplay button {
   border-radius: 5px;
   background-color: rgb(141, 110, 99);
   border: none;
@@ -22,7 +22,7 @@ input {
   color: white;
 }
   
-.createPetForm button:hover, .addVaccineRecordForm button:hover, .addAllergyRecordForm button:hover {
+.createPetForm button:hover, .addVaccineRecordForm button:hover, .addAllergyRecordForm button:hover, .petDisplay button:hover {
   background-color: rgb(172, 158, 153);
   cursor: pointer;
 }
