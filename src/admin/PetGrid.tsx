@@ -21,12 +21,15 @@ function PetGrid() {
   
 
   return (
-    <div className="petGrid">
-      {pets.map((pet) => (
-        <PetItem pet={pet} vaccines={pet.vaccines} allergies={pet.allergies} />
-      ))}
-      
-    </div>
+    <>
+      <h2>Pets Dashboard</h2>
+      <div className="petGrid">
+        {pets.map((pet) => (
+          <PetItem pet={pet} vaccines={pet.vaccines} allergies={pet.allergies} />
+        ))}
+      </div>
+    </>
+    
   );
 }
 

@@ -1,16 +1,8 @@
-body {
-  margin: 20px;
-  background-color: lightgrey;
-  }
-  
-h2 {
-  margin: 0;
-}
-  
 .createPetForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-top: 20px;
 }
   
 textarea,

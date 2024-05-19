@@ -53,7 +53,7 @@ function AddVaccineRecordForm({ setVaccines }: Props) {
   return (
   <form className="addVaccineRecordForm" onSubmit={handleAddRecord}>
     <input placeholder='Vaccine name' required onChange={e => setName(e.target.value)} value={name} />
-    <DatePicker wrapperClassName="datePicker" placeholderText={'Please select a date'} selected={date} onChange={(date: Date) => setDate(date)} />
+    <DatePicker wrapperClassName="datePicker" placeholderText={'Vaccine date'} selected={date} onChange={(date: Date) => setDate(date)} />
     <button type="submit">Add vaccine record</button> 
   </form>
   );

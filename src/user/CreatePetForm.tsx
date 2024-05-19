@@ -47,7 +47,7 @@ function CreatePetForm() {
       <input placeholder='Name' required onChange={e => setName(e.target.value)} value={name} />
       <input placeholder='Type' required onChange={e => setType(e.target.value)} value={type} />
       <input placeholder='Owner Name' required onChange={e => setOwner(e.target.value)} value={owner} />
-      <DatePicker wrapperClassName="datePicker" placeholderText={'Please select a date'} selected={dob} onChange={(date: Date) => setDob(date)} />
+      <DatePicker wrapperClassName="datePicker" placeholderText={'Date of birth'} selected={dob} onChange={(date: Date) => setDob(date)} />
       <button type="submit">Add Pet</button> 
     </form>
   );

@@ -45,6 +45,12 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+## Novellia Pets Project Summary
+Novellia take home quiz: gather and display medical records for your furry friend.
+novellia-pets contains client side code
+novellia-pets-server contains server side code
+please run the server with `npm start` then the app with `npm start` alongside it.
+
 ## Technical Decisions
 [System Design](https://drive.google.com/file/d/1gnSTtLvr3XNYzxoS_2IIkiU75akAfFUD/view?usp=sharing) 
 
@@ -62,6 +68,7 @@ Packages:
 - Admins can currently hit the `/admin` link which provides a read-only mode of all pets in the db with corresponding pet data.
 - Created a ReactContext for pet so I don't have to pass the current "user" (pet) amongst components. This is useful as we need to know which pet was just created so that we can view the appropriate pet data and add records for that pet. 
 - Created a reusable component PetItem which can be shared between the user view and admin view. This is a simple component which presents all the pet data (taking the pet, its vaccines, and allergies, as props).
+- Created two separate components for vaccine and allergy forms because the fields are different and they make different backend queries.
 - The component states are pretty straightforward and mirror the backend.
 - I envisioned that a table/chart would be the best way to convey the medical records for a pet.
 
@@ -71,14 +78,17 @@ Packages:
 - Also ended up needing 2 queries to get the different types of records. This came out of a need to show the user that their records have been successfully added, on the front end.
 
 ## Backend structure
-- I figured it would be cleanest to have a separate table for vaccine records and for allergy records. Each record table has a pet id foreign key which references each record to its corresponding unique pet. This also allows us to build cleanly in the case that we want to add future record types.
+- I figured it would be cleanest to have a separate table for vaccine records and for allergy records. Each record table has a pet id foreign key which references each record to its corresponding unique pet. This way, the immediate pet data remains separate from the medical record data. This also allows us to build cleanly in the case that we want to add future record types.
 - Straightforward data types per field in tables.
 
 ## Improvements
-- Remove the "any" and "@ts-ignore" where added. Flesh out the types.
+- Remove the "any" and "@ts-ignore" where added. Flesh out the types. There's probably a way to use prisma model to import data types.
 - Styling! Very barebones right now. Pretty ugly.
 - Validation: We probably want a list of pets we support, some checks on the pet creation form for the pet type. We should add some restrictions on the datepicker for dob and vaccine to only allow dates before current date.
-- Once there is authentication, we can rely on that to provide current pet data.
+- Once there is authentication, we can rely on logged in user info to provide current pet data.
+- Since allergy severity only has two options currently (mild or severe) we should make that a dropdown so the entries remain consistent with expectations.
+- The admin page UI could be cleaner (maybe we list out the pet names and the admin can click on a pet to view more, rather than displaying all info in its entirety). And/or add pagination as the db grows to maintain load times.
+- There might be some minor duplicated code in queries.ts which can be pulled out into a function (the logic to get all vaccines and allergies for a pet is reused).
 
 ## Reflections
 - First time using Prisma, docs are well done and the setup is very fast. 
