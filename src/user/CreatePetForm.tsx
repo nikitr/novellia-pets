@@ -2,6 +2,7 @@ import {useState, useContext} from 'react';
 import DatePicker from "react-datepicker";
 import './user.css';
 import { PetContext } from '../App';
+import { useNavigate } from "react-router-dom";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -12,6 +13,7 @@ function CreatePetForm() {
   const [dob, setDob] = useState<Date>();
   // @ts-ignore
   const { setCurrPet } = useContext(PetContext);
+  const navigate = useNavigate();
 
   const handleAddPet = async (e: React.FormEvent) => {
     try {
@@ -37,19 +39,23 @@ function CreatePetForm() {
       setType("");
       setOwner("");
       setDob(undefined);
+      navigate("/my-pet");
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <form className="createPetForm" onSubmit={handleAddPet}>
-      <input placeholder='Name' required onChange={e => setName(e.target.value)} value={name} />
-      <input placeholder='Type' required onChange={e => setType(e.target.value)} value={type} />
-      <input placeholder='Owner Name' required onChange={e => setOwner(e.target.value)} value={owner} />
-      <DatePicker wrapperClassName="datePicker" placeholderText={'Date of birth'} selected={dob} onChange={(date: Date) => setDob(date)} />
-      <button type="submit">Add Pet</button> 
-    </form>
+    <div>
+      <h2>Novellia Pets</h2>
+      <form className="createPetForm" onSubmit={handleAddPet}>
+        <input placeholder='Name' required onChange={e => setName(e.target.value)} value={name} />
+        <input placeholder='Type' required onChange={e => setType(e.target.value)} value={type} />
+        <input placeholder='Owner Name' required onChange={e => setOwner(e.target.value)} value={owner} />
+        <DatePicker wrapperClassName="datePicker" placeholderText={'Date of birth'} selected={dob} onChange={(date: Date) => setDob(date)} />
+        <button type="submit">Add Pet</button>
+      </form>
+    </div>
   );
 }
 

@@ -4,15 +4,7 @@ body {
 }
 
 .appContainer {
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 600px) {
-  .appContainer {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 20px;
-  }
+  width: 350px;
 }
 
 .petItem {

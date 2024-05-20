@@ -21,21 +21,30 @@ function App() {
     <Router>
       <Routes>
         <Route
-          path="/"
-          element={<PetContext.Provider value={value}>
-          <div className="appContainer">
-            <CreatePetForm />
-            {currPet?.name && <PetDisplay />}
-          </div>
-        </PetContext.Provider>}
+            path="/"
+            element={
+              <PetContext.Provider value={value}>
+                <div className="appContainer">
+                  <CreatePetForm />
+                </div>
+              </PetContext.Provider>
+            }
+        />
+        <Route
+          path="/my-pet"
+          element={
+            <PetContext.Provider value={value}>
+              {currPet?.name && <PetDisplay />}
+            </PetContext.Provider>
+          }
         />
         <Route
           path="/admin"
-          element={<PetContext.Provider value={value}>
-          <div className="appContainer">
-            <PetGrid />
-          </div>
-        </PetContext.Provider>}
+          element={
+            <PetContext.Provider value={value}>
+              <PetGrid />
+            </PetContext.Provider>
+          }
         />
       </Routes>
     </Router>

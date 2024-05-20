@@ -67,8 +67,8 @@ Packages:
 - react-datepicker: Date selection for pet dob and vaccine dates
 
 ## App structure
-- A general user will hit the homepage which contains the pet creation form and the subsequent display of that pet information. Once a user has created their pet successfully, they can add a vaccine record and/or allergy record. They will see this reflected on the page once created. Admins can currently hit the `/admin` link which provides a read-only mode of all pets in the db with corresponding pet data.
-- I built the pages this way for simplicity, with the general user experience including pet creation/viewing on one page and the admin dashboard on another. Ideally, once we add auth, we'd log the user in and then allow them to see their pet data.
+- A general user will hit the homepage which contains the pet creation form and the subsequent display of that pet information. Once a user has created their pet successfully, they can add a vaccine record and/or allergy record. Admins can currently hit the `/admin` link which provides a read-only mode of all pets in the db with corresponding pet data.
+- I built the pages this way for simplicity (upon pet creation, user is routed to a page showing the pet they created). Ideally, once we add auth, we'd log the user in and then allow them to see their pet data.
 - Created a ReactContext for pet so I don't have to pass the current "user" (pet) amongst components. This is useful as we need to know which pet was just created so that we can view the appropriate pet data and add records for that pet. 
 - Created a reusable component `PetItem` which can be shared between the user view and admin view. This is a simple component which presents all the pet data (taking the pet, its vaccines, and allergies, as props).
 - Created two separate components for vaccine and allergy forms because the fields are different and they make different backend queries.
@@ -92,7 +92,6 @@ Packages:
 - Since allergy severity only has two options currently (mild or severe) we should make that a dropdown so the entries remain consistent with expectations.
 - The admin page UI could be cleaner (maybe we list out the pet names and the admin can click on a pet to view more, rather than displaying all info in its entirety). And/or add pagination as the db grows to maintain load times.
 - There might be some minor duplicated code in queries.ts which can be pulled out into a function (the logic to get all vaccines and allergies for a pet is reused).
-- Only show PetDisplay once pet is created.
 - The edit pet feature must be fleshed out and improved. Should include dob and records. Should have a cancel button to return to pet display. Can also improve the `editPet` query to just pass through the fields that have been changed (currently, I pass through all the fields).
 
 ## Reflections
